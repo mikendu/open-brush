@@ -1,5 +1,20 @@
 {
-  "scopedRegistries": [],
+  "scopedRegistries": [
+    {
+      "name": "Unity NuGet",
+      "url": "https://unitynuget-registry.azurewebsites.net",
+      "scopes": [
+        "org.nuget"
+      ]
+    },
+    {
+      "name": "Keijiro",
+      "url": "https://registry.npmjs.com",
+      "scopes": [
+        "jp.keijiro"
+      ]
+    }
+  ],
   "dependencies": {
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
@@ -7,7 +22,6 @@
     "com.unity.formats.usd": "1.0.3-preview.2",
     "com.unity.ide.rider": "1.2.1",
     "com.unity.ide.vscode": "1.2.3",
-    "com.unity.multiplayer-hlapi": "1.0.8",
     "com.unity.nuget.newtonsoft-json": "2.0.2",
     "com.unity.performance.profile-analyzer": "0.6.0-preview.1",
     "com.unity.quicksearch": "1.4.1",
@@ -18,6 +32,8 @@
     "com.unity.xr.oculus.android": "2.38.6",
     "com.unity.xr.oculus.standalone": "2.38.4",
     "com.unity.xr.openvr.standalone": "2.0.5",
+    "jp.keijiro.klak.ndi": "2.0.2",
+    "org.nuget.system.memory": "4.5.3",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

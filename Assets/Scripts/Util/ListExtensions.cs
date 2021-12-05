@@ -20,9 +20,6 @@ using System.Runtime.InteropServices;
 namespace TiltBrush
 {
 
-#if !(NET_4_6 && UNITY_2017_1_OR_NEWER) // Causes type not to load in 2017.1 + .net 4.6
-    [StructLayout(LayoutKind.Explicit)]
-#endif
     public struct ConvertHelper<TFrom, TTo>
         where TFrom : class
         where TTo : class
@@ -48,15 +45,9 @@ namespace TiltBrush
 #endif
         }
 
-#if !(NET_4_6 && UNITY_2017_1_OR_NEWER) // Causes type not to load in 2017.1 + .net 4.6
-        [FieldOffset(0)] public long before;
-        [FieldOffset(8)] public TFrom input;
-        [FieldOffset(16)] public TTo output;
-#else
         public long before;
         public TFrom input;
         public TTo output;
-#endif
     }
 
     public static class ListExtensions
