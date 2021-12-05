@@ -1,0 +1,18 @@
+instructions:
+
+add the omnity edge blend manager,
+add the final pass camera group. and link the cameras.
+
+select outside the omnimap window:
+
+arrows : moves cursor
+space : select/disselect node
+escape : clear nodes
+shift +arrows : move nodes
+control +arrows : adjust brightness
+
+gamma/number of nodes can be adjusted in the gui
+
+note: this is attached to final pass cameras,  so for example if you use stereo, then it will need to be linked to both left and right channel...
+
+performance testing has not been done.

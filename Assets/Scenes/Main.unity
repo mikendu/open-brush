@@ -2906,9 +2906,10 @@ GameObject:
   m_Component:
   - component: {fileID: 133589829}
   - component: {fileID: 133589828}
-  - component: {fileID: 133589830}
-  - component: {fileID: 133589827}
   - component: {fileID: 133589826}
+  - component: {fileID: 133589832}
+  - component: {fileID: 133589831}
+  - component: {fileID: 133589827}
   m_Layer: 0
   m_Name: Static Camera
   m_TagString: Untagged
@@ -2932,7 +2933,7 @@ MonoBehaviour:
   _keepAlpha: 0
   _captureMethod: 2
   _sourceCamera: {fileID: 0}
-  _sourceTexture: {fileID: 8400000, guid: 2a82ae8b79ca1af4bbba598e1761c0c8, type: 2}
+  _sourceTexture: {fileID: 0}
   _resources: {fileID: 11400000, guid: 69304b86950074db7ba8caba75214004, type: 2}
 --- !u!114 &133589827
 MonoBehaviour:
@@ -2943,10 +2944,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 133589825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe91f659fccfb74daf6ad7b03d85d07, type: 3}
+  m_Script: {fileID: 11500000, guid: dffd4d228db3c5d418188a8c9d882562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: a05aca4b32b5fd14aa95311556d3df67, type: 2}
+  TextureSize: 1024
+  PostProcessingResources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4,
+    type: 2}
 --- !u!20 &133589828
 Camera:
   m_ObjectHideFlags: 0
@@ -2954,7 +2957,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133589825}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -2980,7 +2983,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 100662839
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 2a82ae8b79ca1af4bbba598e1761c0c8, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 1
   m_TargetEye: 0
   m_HDR: 1
@@ -2997,7 +3000,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133589825}
-  m_LocalRotation: {x: 0.12059043, y: 0.37940952, z: -0.04995019, w: 0.9159757}
+  m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
   m_LocalPosition: {x: -30, y: 30, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3005,8 +3008,8 @@ Transform:
   - {fileID: 509927652}
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 15, y: 45, z: 0}
---- !u!114 &133589830
+  m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
+--- !u!114 &133589831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3015,22 +3018,413 @@ MonoBehaviour:
   m_GameObject: {fileID: 133589825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c12500f3afdeb24d9444042960a4cb9, type: 3}
+  m_Script: {fileID: 11500000, guid: ceedfc9051452a244acb15bee6cc6966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: 6581f8d2f208b8340b8d59c7bf38cc9a, type: 3}
-  bloomIntensity: 0.05
-  bloomScatterFactor: 0.5
-  lensDirtScatterFactor: 0.5
-  lensDirtIntensity: 0.05
-  lensDirtTexture: {fileID: 0}
-  inputIsHDR: 1
-  lowQuality: 1
-  depthBlending: 0
-  depthBlendFunction: 0
-  depthBlendFactor: 0.1
-  maxDepthBlendFactor: 1
-  depthScatterFactor: 0.5
+  doLoadConfig: 1
+  omnityUpdatePhase: 2
+  perspectiveCamerasRenderPhase: 0
+  finalPassCamerasRenderPhase: 2
+  omnityTransform: {fileID: 0}
+  debugLevel: 0
+  cameraArray:
+  - name: Front
+    serializeCamera: 1
+    automaticallyConnectTextures: 1
+    localEulerAngles: {x: 0, y: 0, z: 45}
+    targetEyeHint: 0
+    localPosition: {x: 0, y: 0, z: 0}
+    omnityPerspectiveMatrix:
+      fovL: 45.005
+      fovR: 45.005
+      fovT: 45.005
+      fovB: 45.005
+      near: 0.1
+      nearOrtho: -1
+      far: 2000
+      farOrtho: 1
+      preRotation: {x: 0, y: 0, z: 0}
+      matrixMode: 0
+      flipHorizontal: 0
+      orthographicSize: 0.5
+    renderTextureSettings:
+      enabled: 1
+      width: 2048
+      height: 2048
+      mipmap: 1
+      antiAliasing: 1
+      depth: 24
+      anisoLevel: 2
+      mipMapBias: 0
+      myRenderTextureFormat: 7
+      wrapMode: 1
+      filterMode: 2
+      stereoPair: 0
+    cullingMask:
+      serializedVersion: 2
+      m_Bits: 100662839
+    layer: 0
+    postProcessOptions:
+      type: 0
+      antialiasingOptions: 0
+      commaSeperatedLayerNames: FinalPass, FinalPassAlt
+      layerMaskInt: 256
+    _followTilt: 1
+  - name: Right
+    serializeCamera: 1
+    automaticallyConnectTextures: 1
+    localEulerAngles: {x: -45, y: 90, z: 0}
+    targetEyeHint: 0
+    localPosition: {x: 0, y: 0, z: 0}
+    omnityPerspectiveMatrix:
+      fovL: 45.005
+      fovR: 45.005
+      fovT: 45.005
+      fovB: 45.005
+      near: 0.1
+      nearOrtho: -1
+      far: 2000
+      farOrtho: 1
+      preRotation: {x: 0, y: 0, z: 0}
+      matrixMode: 0
+      flipHorizontal: 0
+      orthographicSize: 0.5
+    renderTextureSettings:
+      enabled: 1
+      width: 2048
+      height: 2048
+      mipmap: 1
+      antiAliasing: 1
+      depth: 24
+      anisoLevel: 2
+      mipMapBias: 0
+      myRenderTextureFormat: 7
+      wrapMode: 1
+      filterMode: 2
+      stereoPair: 0
+    cullingMask:
+      serializedVersion: 2
+      m_Bits: 100662839
+    layer: 0
+    postProcessOptions:
+      type: 0
+      antialiasingOptions: 0
+      commaSeperatedLayerNames: FinalPass, FinalPassAlt
+      layerMaskInt: 256
+    _followTilt: 1
+  - name: Left
+    serializeCamera: 1
+    automaticallyConnectTextures: 1
+    localEulerAngles: {x: -45, y: -90, z: 0}
+    targetEyeHint: 0
+    localPosition: {x: 0, y: 0, z: 0}
+    omnityPerspectiveMatrix:
+      fovL: 45.005
+      fovR: 45.005
+      fovT: 45.005
+      fovB: 45.005
+      near: 0.1
+      nearOrtho: -1
+      far: 2000
+      farOrtho: 1
+      preRotation: {x: 0, y: 0, z: 0}
+      matrixMode: 0
+      flipHorizontal: 0
+      orthographicSize: 0.5
+    renderTextureSettings:
+      enabled: 1
+      width: 2048
+      height: 2048
+      mipmap: 1
+      antiAliasing: 1
+      depth: 24
+      anisoLevel: 2
+      mipMapBias: 0
+      myRenderTextureFormat: 7
+      wrapMode: 1
+      filterMode: 2
+      stereoPair: 0
+    cullingMask:
+      serializedVersion: 2
+      m_Bits: 100662839
+    layer: 0
+    postProcessOptions:
+      type: 0
+      antialiasingOptions: 0
+      commaSeperatedLayerNames: FinalPass, FinalPassAlt
+      layerMaskInt: 256
+    _followTilt: 1
+  - name: Back
+    serializeCamera: 1
+    automaticallyConnectTextures: 1
+    localEulerAngles: {x: 0, y: 180, z: 45}
+    targetEyeHint: 0
+    localPosition: {x: 0, y: 0, z: 0}
+    omnityPerspectiveMatrix:
+      fovL: 45.005
+      fovR: 45.005
+      fovT: 45.005
+      fovB: 45.005
+      near: 0.1
+      nearOrtho: -1
+      far: 2000
+      farOrtho: 1
+      preRotation: {x: 0, y: 0, z: 0}
+      matrixMode: 0
+      flipHorizontal: 0
+      orthographicSize: 0.5
+    renderTextureSettings:
+      enabled: 1
+      width: 2048
+      height: 2048
+      mipmap: 1
+      antiAliasing: 1
+      depth: 24
+      anisoLevel: 2
+      mipMapBias: 0
+      myRenderTextureFormat: 7
+      wrapMode: 1
+      filterMode: 2
+      stereoPair: 0
+    cullingMask:
+      serializedVersion: 2
+      m_Bits: 100662839
+    layer: 0
+    postProcessOptions:
+      type: 0
+      antialiasingOptions: 0
+      commaSeperatedLayerNames: FinalPass, FinalPassAlt
+      layerMaskInt: 256
+    _followTilt: 1
+  screenShapes:
+  - name: Screen
+    cameraSource___TODO_SERIALIZE: 0
+    serialize: 1
+    startEnabled: 1
+    automaticallyConnectTextures: 1
+    screenShapeType: 0
+    sphereParams:
+      radius: 1
+      thetaStart: -180
+      thetaEnd: 180
+      phiStart: 0
+      phiEnd: 90
+      slices: 85
+      stacks: 85
+      invert: 0
+      internalSurface: 1
+      destroyOnLoad: 1
+      flagRegenerateScreen: 1
+    cylinderParams:
+      radius: 1
+      thetaStart: -180
+      thetaEnd: 180
+      yTop: 1
+      yBottom: -1
+      slices: 60
+      stacks: 60
+      invert: 0
+      internalSurface: 1
+      destroyOnLoad: 1
+      flagRegenerateScreen: 1
+    cubeParams:
+      slices: 60
+      stacks: 60
+      internalSurface: 1
+      destroyOnLoad: 1
+      flagRegenerateScreen: 1
+      drawNorth: 1
+      drawSouth: 1
+      drawEast: 1
+      drawWest: 1
+      drawFloor: 1
+      drawCeiling: 1
+    planeParams:
+      left: -0.5
+      right: 0.5
+      top: 0.5
+      bottom: -0.5
+      simpleplane: 1
+      slices: 60
+      stacks: 60
+      destroyOnLoad: 1
+      flagRegenerateScreen: 1
+    scale: {x: 1, y: 1, z: 1}
+    transformInfo:
+      position: {x: 0, y: 0, z: 0}
+      localEulerAngles: {x: 0, y: 0, z: 0}
+    layer: 30
+    meshFileName: OmnitySphere
+    shaderFileName: Elumenati/Omnity/FinalPass4/Compiled
+    finalPassShaderType: 0
+    finalPassShaderMultiSample: 0
+    renderer: {fileID: 0}
+    trans: {fileID: 0}
+    bitMaskConnectedCameras: 0
+    shaderKeywordsAdditional: []
+    eyeTarget: 0
+  finalPassCameras:
+  - name: Final Pass Camera
+    serialize: 1
+    guiType: -2
+    startEnabled: 1
+    transformInfo:
+      position: {x: 0, y: 0, z: 0}
+      localEulerAngles: {x: -90, y: 0, z: 0}
+    scale: 1
+    normalizedViewportRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    targetEyeHint: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    clearFlags: 2
+    cullingMask:
+      serializedVersion: 2
+      m_Bits: 1073741824
+    layer: 30
+    myCamera: {fileID: 0}
+    myCameraTransform: {fileID: 0}
+    normalizedLensOffset: 1
+    lensOffsetY: 0
+    lensScaleX: 1
+    lensScaleY: 1
+    projectorType: 0
+    addGUILayer: 0
+    myOmnityGUI: {fileID: 0}
+    postProcessOptions:
+      type: 0
+      antialiasingOptions: 0
+      commaSeperatedLayerNames: FinalPass, FinalPassAlt
+      layerMaskInt: 256
+    renderTextureSettings:
+      enabled: 0
+      width: 2048
+      height: 2048
+      mipmap: 1
+      antiAliasing: 1
+      depth: 24
+      anisoLevel: 2
+      mipMapBias: 0
+      myRenderTextureFormat: 7
+      wrapMode: 1
+      filterMode: 2
+      stereoPair: 0
+    displayTarget: 0
+    displayTargetApply: 0
+    _followTilt: 1
+    omnityPerspectiveMatrix:
+      fovL: 45.005
+      fovR: 45.005
+      fovT: 45.005
+      fovB: 45.005
+      near: 0.1
+      nearOrtho: -1
+      far: 2000
+      farOrtho: 1
+      preRotation: {x: 0, y: 0, z: 0}
+      matrixMode: 0
+      flipHorizontal: 0
+      orthographicSize: 0.5
+    GUIViewportScaleHint: 1
+    targetDisplay: 0
+  guiPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  windowInfo:
+    GUIViewportPositionHint:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    omnityGUIScale: 1
+    fullscreenInfo:
+      applyOnLoad: 0
+      goalWindowPosAndRes:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1024
+        height: 768
+      fullScreenMode: 0
+      goalRefreshRate: 0
+    GUIViewportScaleHint: 1
+  keepUpdatingFinalPassCameras: 0
+  keepUpdatingCameraArray: 0
+  keepUpdatingScreen: 0
+  keepUpdatingShaders: 1
+  myOmnityGUI: {fileID: 0}
+  enableTiltWithBracketKeys: 1
+  _tilt: 0
+  yaw: 0
+  roll: 0
+  pluginIDs: 
+--- !u!114 &133589832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133589825}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 133589829}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 134217728
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &135695199
 GameObject:
   m_ObjectHideFlags: 0
@@ -15516,6 +15910,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000013533438718, guid: dedd7823645ca60468aca5f2ff1b9a7f,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013533438718, guid: dedd7823645ca60468aca5f2ff1b9a7f,
+        type: 3}
       propertyPath: lowQuality
       value: 1
       objectReference: {fileID: 0}
@@ -15564,8 +15963,61 @@ PrefabInstance:
       propertyPath: mat
       value: 
       objectReference: {fileID: 2100000, guid: a05aca4b32b5fd14aa95311556d3df67, type: 2}
+    - target: {fileID: 8383487415960193186, guid: dedd7823645ca60468aca5f2ff1b9a7f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dedd7823645ca60468aca5f2ff1b9a7f, type: 3}
+--- !u!1 &1236828699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236828701}
+  - component: {fileID: 1236828700}
+  m_Layer: 27
+  m_Name: Post Processing Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1236828700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236828699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 638488a573c6acc408e015cf975589dd, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &1236828701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236828699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251041023
 GameObject:
   m_ObjectHideFlags: 0

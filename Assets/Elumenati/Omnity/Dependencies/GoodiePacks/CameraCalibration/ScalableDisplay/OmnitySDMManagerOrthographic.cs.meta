@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 24c61bbc5cc72a144b6b9a83d1d41285
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - edgeBlendVertexLitShader: {fileID: 4800000, guid: ce36ce5984a0a0a4e90577a8e8acf408,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 48997f1ec8aebd44bbf51012d89acad8
+timeCreated: 1465409849
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - edgeBlendVertexLitShader: {fileID: 4800000, guid: ce36ce5984a0a0a4e90577a8e8acf408,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
