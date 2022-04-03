@@ -5,13 +5,14 @@ using TiltBrush;
 
 public class CameraPositioner : MonoBehaviour
 {
-    private Vector3 startingPosition = new Vector3(-30, 30, -30);
-    private Quaternion startingRotation = Quaternion.identity;
+    public Vector3 staticPosition = new Vector3(-30, 30, -30);
+    public Quaternion staticRotation = Quaternion.identity;
+    private bool snapRotation;
 
     void Start()
     {
-        startingPosition = this.transform.localPosition;
-        startingRotation = this.transform.localRotation;
+        staticPosition = this.transform.localPosition;
+        staticRotation = this.transform.localRotation;
     }
 
 
@@ -27,8 +28,47 @@ public class CameraPositioner : MonoBehaviour
         Matrix4x4 inverse = Matrix4x4.TRS(Vector3.zero, invertRotation, invertScale);
 
         // this.transform.localPosition = inverse * (Position + invertPosition);
-        this.transform.localPosition = inverse * startingPosition;
+        // Vector3 worldOrigin = App.Scene.Pose.inverse.MultiplyPoint(Vector3.zero);
+        // this.transform.localPosition = worldOrigin;
+
+        this.transform.localPosition = inverse * staticPosition;
         this.transform.localScale = invertScale;
-        this.transform.localRotation = invertRotation * startingRotation;
+        this.transform.localRotation = invertRotation * staticRotation;
+
+        float rollAngle = Mathf.Rad2Deg * Mathf.Acos(Vector3.Dot(transform.right, Vector3.up));
+        float rollCorrectionAngle = rollAngle - 90.0f;
+        Quaternion rollCorrection = Quaternion.AngleAxis(rollCorrectionAngle, transform.up);
+        transform.localRotation = rollCorrection * transform.localRotation;
+
+        if (snapRotation)
+        {
+            float pitchAngle = Mathf.Rad2Deg * Mathf.Acos(Vector3.Dot(transform.forward, -Vector3.up));
+            float pitchCorrectionAngle = pitchAngle - 45;
+            Quaternion pitchCorrection = Quaternion.AngleAxis(pitchCorrectionAngle, transform.right);
+            transform.localRotation = pitchCorrection * transform.localRotation;
+        }
     }
+
+
+    public void SetWorldPose(Vector3 worldPosition, Quaternion worldRotation, bool snapped)
+    {
+        float scale = App.Scene.Pose.scale;
+        Quaternion rotation = App.Scene.Pose.rotation;
+        Matrix4x4 rotateScale = Matrix4x4.TRS(Vector3.zero, rotation, scale * Vector3.one);
+
+        Vector3 desiredLocalPosition = App.Scene.Pose.inverse * worldPosition;
+        Vector3 desiredStaticPosition = rotateScale * desiredLocalPosition;
+        staticPosition = desiredStaticPosition;
+
+        // Quaternion desiredLocalRotation = App.Scene.Pose.inverse.rotation * worldRotation;
+        // Quaternion desiredStaticRotation = rotation * desiredLocalRotation;
+        //staticRotation = desiredStaticRotation;
+
+        // Fully un-snapped, can rotate any which way
+        staticRotation = worldRotation;
+        this.snapRotation = snapped;
+
+
+    }
+
 }

@@ -115,7 +115,9 @@ MonoBehaviour:
   - {fileID: 6756679521659929714}
   m_ValidSnapRotationStickyAngle: 0
   m_SnapGhostMaterial: {fileID: 0}
-  Collider: {fileID: 6921647335782578178}
+  Test:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &6921647335782578178
 SphereCollider:
   m_ObjectHideFlags: 0

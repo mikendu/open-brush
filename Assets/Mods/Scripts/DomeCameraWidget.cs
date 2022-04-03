@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TiltBrush;
 
 public class DomeCameraWidget : GrabWidget
 {
     private SphereCollider Collider;
+    private CameraPositioner Positioner;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -19,6 +21,7 @@ public class DomeCameraWidget : GrabWidget
         m_GrabDistance = 4.0f;
         m_CollisionRadius = 1.2f;
 
+        Positioner = transform.root.gameObject.GetComponentInChildren<CameraPositioner>();
         base.Awake();
     }
 
@@ -26,6 +29,39 @@ public class DomeCameraWidget : GrabWidget
     void Update()
     {
         
+    }
+    override public void RecordAndSetPosRot(TrTransform inputXf)
+    {
+        // base.RecordAndSetPosRot(inputXf);
+        // transform.position = inputXf.translation;
+
+        HandleSnap();
+        
+        bool snapped = m_AllowSnapping && SnapEnabled;
+        Positioner.SetWorldPose(inputXf.translation, inputXf.rotation, snapped);
+    }
+
+    private void HandleSnap()
+    {
+        // Refresh snap input and enter/exit snapping state.
+        if (m_AllowSnapping)
+        {
+            SnapEnabled = InputManager.Controllers[(int)m_InteractingController].GetCommand(
+                    InputManager.SketchCommands.MenuContextClick) &&
+                SketchControlsScript.m_Instance.ShouldRespondToPadInput(m_InteractingController) &&
+                !m_Pinned;
+
+            if (!m_bWasSnapping && SnapEnabled)
+            {
+                InitiateSnapping();
+            }
+
+            if (m_bWasSnapping && !SnapEnabled)
+            {
+                FinishSnapping();
+                m_SnapDriftCancel = false;
+            }
+        }
     }
 
 

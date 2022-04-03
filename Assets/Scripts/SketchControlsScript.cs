@@ -2187,11 +2187,13 @@ namespace TiltBrush
                 m_MaybeDriftingGrabWidget.ClearVelocities();
             }
 
+
             // UserInteracting should be the first thing that happens here so OnUserBeginInteracting can
             // be called before everything else.
             m_CurrentGrabWidget.UserInteracting(true, controllerName);
             m_CurrentGrabWidget.ClearVelocities();
             ClearGrabWidgetHoldHistory();
+
 
             //set our info names according to this controller's name
             m_GrabWidgetOneHandInfo.m_Name = controllerName;
